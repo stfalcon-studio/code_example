@@ -1,0 +1,164 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/mixins";
+
+.md-stf-accordion {
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 24px;
+
+  &__item {
+    position: relative;
+    display: block;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.24),0 0px 2px 0 rgba(0,0,0,0.12);
+
+    &>.md-stf-accordion__wrapper {
+      transition: margin 0.2s ease-in-out;
+    }
+
+    .icon-arrow {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+    }
+
+    &_active {
+      border-radius: 2px;
+      margin: 16px 0;
+
+      .md-stf-accordion__header {
+        border-color: $white-color;
+      }
+
+      .md-stf-accordion__body {
+        max-height: 15em;
+      }
+
+      .icon-arrow {
+        transform: rotate(-180deg);
+      }
+    }
+
+    &:first-child {
+      .md-stf-accordion__item_active {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__header {
+    display: block;
+    font-size: 16px;
+    background-color: $white-color;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 15px 9px 56px;
+    outline: none;
+    transition: border-color 0.2s linear;
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+
+  &__body {
+    display: block;
+    padding: 0px 15px 0px 56px;
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-in-out;
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+
+  &__name {
+    display: inline-block;
+    width: 50%;
+    font-size: 16px;
+    font-weight: 400;
+    float: left;
+  }
+
+  &__status {
+    float: right;
+    color: $grey-color;
+  }
+
+  &__checkbox {
+    float: right;
+    margin-top: -5px;
+    margin-right: 63px;
+
+    md-checkbox {
+      min-height: 29px;
+      margin-bottom: 0px;
+    }
+  }
+
+  &__text {
+    max-width: 70%;
+    font-size: 13px;line-height: 16px;
+    color: $grey-color;
+    float: left;
+  }
+
+  &__details {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 16px;
+    color: $red-color;
+    margin-top: 11px;
+  }
+
+  &__time {
+    width: 169px;
+    margin-top: 20px;
+    float: right;
+
+    md-input-container {
+      margin: 0;
+    }
+  }
+
+  &_second {
+
+    .md-stf-accordion {
+
+      &__item {
+
+        .icon-arrow {
+          position: absolute;
+          top: 12px;
+          right: 16px;
+          left: auto;
+        }
+
+        &_active {
+          .md-stf-accordion__status {
+            visibility: hidden;
+          }
+        }
+      }
+
+      &__header {
+        padding: 15px 56px 13px 15px;
+      }
+
+      &__body {
+        padding: 0px 56px 0px 15px;
+      }
+    }
+  }
+}
+
+
+
+

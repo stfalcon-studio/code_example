@@ -1,0 +1,10 @@
+<div class="md-stf-accordion__wrapper" ng-class="{'md-stf-accordion__item_active': $ctrl.opened}">
+    <md-stf-accordion__header data-ng-click="$ctrl.openClose();"  class="md-stf-accordion__header">
+        <i class="material-icons material-icons_grey icon-arrow">keyboard_arrow_down</i>
+        <section ng-transclude="header">
+        </section>
+    </md-stf-accordion__header>
+    <md-stf-accordion__body class="md-stf-accordion__body" ng-transclude="body">
+
+    </md-stf-accordion__body>
+</div>
