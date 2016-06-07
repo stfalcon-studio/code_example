@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.stfalcon.android.ui.activities.main.MainActivityVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/tabLayout"
+            android:fitsSystemWindows="true"
+            android:background="@color/white"
+            tools:context=".ui.activities.main.MainActivity" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/tabLayout"
+            android:background="@color/gray2" />
+
+        <com.stfalcon.android.ui.custom.BottomTabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray1"
+            android:gravity="center_horizontal"
+            app:gone="@{viewModel.isKeyboardShown}"
+            app:items="@{viewModel.menuRes}"
+            app:listener="@{viewModel.tabListener}"
+            app:selectedTab="@{viewModel.startSelectedTab}" />
+
+    </RelativeLayout>
+
+</layout>

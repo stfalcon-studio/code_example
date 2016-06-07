@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.stfalcon.android.ui.fragments.profile.ProfileFragmentVM" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical"
+            tools:context=".ui.fragments.profile.ProfileFragment">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/ActionBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        style="@style/TextWhite19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/profile_title" />
+
+                    <TextView
+                        style="@style/TextWhite14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="16dp"
+                        android:alpha="0.7"
+                        android:gravity="center_vertical"
+                        android:text="@string/profile_edit"
+                        android:textAllCaps="true"
+                        app:onClick="@{viewModel::openEdit}" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:src="@{viewModel.profile.avatar.big}"
+                app:riv_oval="true" />
+
+            <TextView
+                style="@style/TextBlack19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="@{viewModel.profile.name}" />
+
+            <TextView
+                style="@style/TextDark16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="13dp"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.profile.ageCityString}" />
+
+            <include
+                layout="@layout/part_view_button_list"
+                app:onClick="@{viewModel::openFriends}"
+                app:text="@{@string/profile_friends}" />
+
+            <include
+                layout="@layout/part_view_button_list"
+                app:onClick="@{viewModel::openPlaces}"
+                app:text="@{@string/profile_places}" />
+
+            <include
+                layout="@layout/part_view_button_list"
+                app:onClick="@{viewModel::openSettings}"
+                app:text="@{@string/profile_settings}" />
+
+            <include
+                layout="@layout/part_view_button_list"
+                app:onClick="@{viewModel.logout}"
+                app:text="@{@string/profile_quit}" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
