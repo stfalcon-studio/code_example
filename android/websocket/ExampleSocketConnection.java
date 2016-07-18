@@ -8,9 +8,6 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.triplook.android.BuildConfig;
-import com.triplook.android.data.events.RealTimeEvent;
-import com.triplook.android.data.preferences.Preferences;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -29,11 +26,11 @@ public class ExampleSocketConnection implements ClientWebSocket.MessageListener 
     };
 
     private void startCheckConnection() {
-        //socketConnectionHandler.postDelayed(checkConnectionRunnable, 5000);
+        socketConnectionHandler.postDelayed(checkConnectionRunnable, 5000);
     }
 
     private void stopCheckConnection() {
-        //socketConnectionHandler.removeCallbacks(checkConnectionRunnable);
+        socketConnectionHandler.removeCallbacks(checkConnectionRunnable);
     }
 
     public ExampleSocketConnection(Context context) {
@@ -49,7 +46,7 @@ public class ExampleSocketConnection implements ClientWebSocket.MessageListener 
         if (clientWebSocket != null) clientWebSocket.close();
         try {
             clientWebSocket = new ClientWebSocket(this,
-                    BuildConfig.TRIPLOOK_SOCKET + Preferences.getManager().getUserId());
+                    BuildConfig.SOCKET_URL + Preferences.getManager().getUserId());
             clientWebSocket.connect();
             Log.i("Websocket", "Socket connected by user " + Preferences.getManager().getUserId());
         } catch (Exception e) {

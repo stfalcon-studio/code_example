@@ -2,8 +2,6 @@ package com.stfalcon.websocket;
 
 import android.support.v7.app.AppCompatActivity;
 
-import com.triplook.android.data.events.RealTimeEvent;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
